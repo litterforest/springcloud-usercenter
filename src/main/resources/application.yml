@@ -12,3 +12,9 @@ spring:
     url: jdbc:mysql://192.168.174.130:3306/usercenter?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8
     username: root
     password: 123456
+
+token:
+  header: Authorization
+  secret: fjdhs&*^*98
+  # 令牌有效时间（默认30分钟）
+  expire: 3600000

@@ -1,4 +1,4 @@
-package com.softd.test.springcloud.usercenter.config;
+package com.softd.test.springcloud.usercenter.config.security.jwt;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,11 +19,11 @@ import java.io.IOException;
  * @author cobee
  * @since 2020-11-01
  */
-@Component
+//@Component
 public class JwtAuthTokenFilter extends OncePerRequestFilter {
     @Autowired
     private JwtTokenHelper jwtTokenHelper;
-    @Resource(name = "userServiceImpl")
+    @Resource(name = "userDetailsServiceImpl")
     private UserDetailsService userDetailsService;
     @Override
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response,

@@ -12,6 +12,11 @@ spring:
     url: jdbc:mysql://192.168.174.130:3306/usercenter?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf-8
     username: root
     password: 123456
+  redis:
+    database: 10
+    host: 192.168.174.130
+    port: 6379
+#    password: LhPJNMF3
 
 token:
   header: Authorization

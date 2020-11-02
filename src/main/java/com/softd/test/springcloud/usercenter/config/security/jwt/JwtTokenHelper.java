@@ -1,4 +1,4 @@
-package com.softd.test.springcloud.usercenter.config;
+package com.softd.test.springcloud.usercenter.config.security.jwt;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.ExpiredJwtException;
@@ -26,7 +26,7 @@ import java.util.Map;
  */
 @Getter
 @Setter
-@Component
+//@Component
 @Slf4j
 public class JwtTokenHelper {
     @Value("${token.header}")

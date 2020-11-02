@@ -1,12 +1,12 @@
-package com.softd.test.springcloud.usercenter.config;
+package com.softd.test.springcloud.usercenter.config.security.basic;
 
+import com.softd.test.springcloud.usercenter.config.security.jwt.MyAuthenticationFailureHandler;
+import com.softd.test.springcloud.usercenter.config.security.jwt.MyAuthenticationSuccessHandler;
 import com.softd.test.springcloud.usercenter.service.AuthService;
-import com.softd.test.springcloud.usercenter.service.UserServiceImpl;
+import com.softd.test.springcloud.usercenter.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpMethod;
-import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -16,17 +16,17 @@ import org.springframework.security.crypto.scrypt.SCryptPasswordEncoder;
 import java.util.List;
 import java.util.Map;
 
-@Configuration
+//@Configuration
 public class DatabaseWebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired
-    private UserServiceImpl userService;
+    private UserDetailsServiceImpl userService;
     @Autowired
     private AuthService authService;
-    @Autowired
-    private MyAuthenticationSuccessHandler myAuthenticationSuccessHandler;
-    @Autowired
-    private MyAuthenticationFailureHandler myAuthenticationFailureHandler;
+//    @Autowired
+//    private MyAuthenticationSuccessHandler myAuthenticationSuccessHandler;
+//    @Autowired
+//    private MyAuthenticationFailureHandler myAuthenticationFailureHandler;
 
     @Bean
     public SCryptPasswordEncoder sCryptPasswordEncoder() {

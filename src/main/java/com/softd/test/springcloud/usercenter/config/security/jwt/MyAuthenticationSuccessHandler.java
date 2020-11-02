@@ -1,11 +1,11 @@
-package com.softd.test.springcloud.usercenter.config;
+package com.softd.test.springcloud.usercenter.config.security.jwt;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.softd.test.springcloud.usercenter.support.web.RestResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
-import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.web.authentication.AuthenticationFailureHandler;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.stereotype.Component;
 
 import javax.servlet.ServletException;
@@ -19,16 +19,15 @@ import java.io.IOException;
  * @author cobee
  * @since 2020-11-01
  */
-@Component
-public class MyAuthenticationFailureHandler implements AuthenticationFailureHandler {
+//@Component
+public class MyAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
     @Autowired
     private ObjectMapper objectMapper;
     @Override
-    public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response,
-                                        AuthenticationException exception) throws IOException, ServletException {
+    public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response,
+                                        Authentication authentication) throws IOException, ServletException {
         response.setContentType(MediaType.APPLICATION_JSON_UTF8_VALUE);
-        RestResponse<String> restResponse = new RestResponse("0", "用户名或密码错误",
-                "用户名或密码错误");
+        RestResponse<String> restResponse = new RestResponse("1", "登录成功", "登录成功");
         response.getWriter().print(objectMapper.writeValueAsString(restResponse));
     }
 }

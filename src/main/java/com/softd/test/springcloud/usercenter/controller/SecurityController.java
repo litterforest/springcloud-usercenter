@@ -19,8 +19,8 @@ import javax.servlet.http.HttpSession;
 @Slf4j
 public class SecurityController {
 
-    @Autowired
-    private JwtTokenHelper jwtTokenHelper;
+//    @Autowired
+//    private JwtTokenHelper jwtTokenHelper;
 
     @RequestMapping("/loginMsg")
     public RestResponse<String> loginMsg(HttpSession session) {

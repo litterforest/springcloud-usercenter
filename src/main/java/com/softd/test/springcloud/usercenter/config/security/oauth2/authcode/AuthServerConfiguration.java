@@ -40,23 +40,23 @@ public   class AuthServerConfiguration extends AuthorizationServerConfigurerAdap
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         //对密码进行加密
         clients.withClientDetails(clientDetails());
-//        String secret = new BCryptPasswordEncoder().encode("123456");
-//        clients.jdbc(dataSource).withClient("client");
-//        //能够使用内存或者JDBC来实现客户端详情服务
-//        //此处使用：内存式
-//        clients.inMemory()
-//
-//                //创建客户端id和密码
-//                .withClient("client")
-//                .secret(secret)
-//                //支持的oath2.0的授权模式
-//                .authorizedGrantTypes("authorization_code")
-//                //在authorization_code、implicit模式下的重定向地址
-//                .redirectUris("http://example.com")
-//                //作用范围,随便写
-//                .scopes("select")
-//                .accessTokenValiditySeconds(1200)
-//                .refreshTokenValiditySeconds(50000);
+        String secret = new BCryptPasswordEncoder().encode("123456");
+        clients.jdbc(dataSource).withClient("client");
+        //能够使用内存或者JDBC来实现客户端详情服务
+        //此处使用：内存式
+        clients.inMemory()
+
+                //创建客户端id和密码
+                .withClient("client")
+                .secret(secret)
+                //支持的oath2.0的授权模式
+                .authorizedGrantTypes("authorization_code")
+                //在authorization_code、implicit模式下的重定向地址
+                .redirectUris("http://example.com")
+                //作用范围,随便写
+                .scopes("select")
+                .accessTokenValiditySeconds(1200)
+                .refreshTokenValiditySeconds(50000);
 
         //authorization_code模式测试地址：
         //  第一步获取code(GET)：  http://localhost:9908/oauth/authorize?client_id=client&response_type=cope&scope=select&redirect_uri=http://example.com

@@ -1,5 +1,6 @@
 package com.softd.test.springcloud.usercenter.config.security.oauth2.password;
 
+import com.softd.test.springcloud.usercenter.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -28,6 +29,8 @@ public   class AuthServerConfiguration extends AuthorizationServerConfigurerAdap
     RedisConnectionFactory redisConnectionFactory;
     @Autowired
     private DataSource dataSource;
+    @Autowired
+    private UserDetailsServiceImpl userService;
 
     @Bean
     public ClientDetailsService clientDetails() {
@@ -36,14 +39,15 @@ public   class AuthServerConfiguration extends AuthorizationServerConfigurerAdap
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
-        //对密码进行加密
+        //对密码进行加密，数据保存在数据库当中
         clients.withClientDetails(clientDetails());
     }
 
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints.tokenStore(new RedisTokenStore(redisConnectionFactory))
-                .authenticationManager(authenticationManager);
+                .authenticationManager(authenticationManager)
+                .userDetailsService(userService);
     }
 
     @Override

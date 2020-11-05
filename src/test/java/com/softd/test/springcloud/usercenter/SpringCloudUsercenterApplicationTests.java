@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.scrypt.SCryptPasswordEncoder;
 
 import java.util.ArrayList;
@@ -71,5 +72,13 @@ class SpringCloudUsercenterApplicationTests {
         argList.add(args);
         int[] ints = jdbcTemplate.batchUpdate(insertStr, argList);
         System.out.println(ints);
+    }
+
+    @Test
+    public void createClientInfo() {
+        SCryptPasswordEncoder encoder = new SCryptPasswordEncoder();
+        String secret = encoder.encode("123456");
+        String sql = "insert into oauth_client_details(client_id, client_secret, authorized_grant_types, scope, access_token_validity, refresh_token_validity) values(?,?,?,?,?,?)";
+        jdbcTemplate.update(sql, "client", secret, "password", "read", 1200, 50000);
     }
 }

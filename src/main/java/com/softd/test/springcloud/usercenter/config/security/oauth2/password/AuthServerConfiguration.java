@@ -48,6 +48,11 @@ public   class AuthServerConfiguration extends AuthorizationServerConfigurerAdap
         endpoints.tokenStore(new RedisTokenStore(redisConnectionFactory))
                 .authenticationManager(authenticationManager)
                 .userDetailsService(userService);
+
+        // 获取token，post表单提交
+        // http://localhost:8080/oauth/token
+        // 刷新token，post非表单提交
+        // http://localhost:8080/oauth/token?grant_type=refresh_token&client_id=client&client_secret=123456&refresh_token=6177c269-c4c2-4484-8be9-84b5b1dd72de
     }
 
     @Override

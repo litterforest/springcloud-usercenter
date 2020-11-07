@@ -1,4 +1,4 @@
-package com.softd.test.springcloud.usercenter.config.security.oauth2.password;
+package com.softd.test.springcloud.usercenter.config.security.oauth2.jwt;
 
 import com.softd.test.springcloud.usercenter.service.UserDetailsServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,11 +9,10 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.crypto.scrypt.SCryptPasswordEncoder;
 
-//@Configuration
+@Configuration
 public class WebSecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     @Autowired

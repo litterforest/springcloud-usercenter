@@ -19,7 +19,7 @@ import javax.sql.DataSource;
 /**
  * 认证服务器配置+
  */
-@Configuration
+//@Configuration
 public   class AuthServerConfiguration extends AuthorizationServerConfigurerAdapter {
     private static final String DEMO_RESOURCE_ID = "order";
 
@@ -62,7 +62,8 @@ public   class AuthServerConfiguration extends AuthorizationServerConfigurerAdap
                 //url:/oauth/token_key,exposes public key for token verification if using JWT tokens
                 .tokenKeyAccess("permitAll()")
                 //url:/oauth/check_token allow check token
-                .checkTokenAccess("isAuthenticated()")
+//                .checkTokenAccess("isAuthenticated()")
+                .checkTokenAccess("permitAll()")
                 //允许表单认证
                 .allowFormAuthenticationForClients();
     }
